@@ -1,0 +1,37 @@
+name: ipfinder
+version: '1.0'
+description: プレイヤーのIPを検索します。
+main: net.harupiza.ipfinder.Ipfinder
+api-version: '1.21'
+
+permissions:
+  ipfinder.*:
+    children:
+      - ipfinder.find.*
+      - ipfinder.reload
+  ipfinder.reload:
+    description: 設定をリロードします。
+  ipfinder.find.*:
+    children:
+      - ipfinder.find.ip
+      - ipfinder.find.player
+  ipfinder.find.ip:
+    description: IPのプレイヤーを検索します。
+  ipfinder.find.player:
+    description: プレイヤーのIPを検索します。
+
+commands:
+  ipfinder_reload:
+    description: 設定をリロードします。
+    permission: ipfinder.reload
+    aliases: [ipfreload]
+  ipfinder_findip:
+    description: IPのプレイヤーを検索します。
+    permission: ipfinder.find.ip
+    aliases: [findip, fip]
+    usage: /findip <IP>
+  ipfinder_findplayer:
+    description: プレイヤーのIPを検索します。
+    permission: ipfinder.find.player
+    aliases: [findplayer, fpl]
+    usage: /findplayer <プレイヤー名>
