@@ -15,7 +15,7 @@ public final class Ipfinder extends JavaPlugin implements Listener {
     public Boolean doesEnabledThis = false;
     public ArrayList<Ipplayer> ipplayer = new ArrayList<>();
     public Datamanager datamanager = new Datamanager(this);
-    public final boolean isDebug = true;
+    public final boolean isDebug = false;
 
     @Override
     public void onEnable() {
@@ -74,7 +74,7 @@ public final class Ipfinder extends JavaPlugin implements Listener {
         if (!doesEnabledThis) return;
         var player = event.getPlayer();
         var address = player.getAddress();
-        var ip2 = new Ipplayer(Objects.requireNonNull(address).getHostName(), player, this);
+        var ip2 = new Ipplayer(Objects.requireNonNull(address).getAddress().getHostAddress(), player, this);
 
         if (isDebug) getLogger().log(Level.INFO, "IP: " + ip2.ip);
 
